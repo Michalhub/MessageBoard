@@ -22,6 +22,14 @@ class Comment
     private $id;
 
     /**
+     * @ORM\ManyToOne(
+     *     targetEntity="Ad",
+     *     inversedBy="comment"
+     * )
+     */
+    private $ad;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="comment", type="text")

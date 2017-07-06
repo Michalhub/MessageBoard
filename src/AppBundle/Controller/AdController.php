@@ -3,9 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Ad;
+use AppBundle\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Ad controller.
@@ -17,7 +20,7 @@ class AdController extends Controller
     /**
      * Lists all ad entities.
      *
-     * @Route("/", name="ad_index")
+     * @Route("/", name="ad_index")Symfony\Component\Validator\Constraints\DateTime
      * @Method("GET")
      */
     public function indexAction()
@@ -40,10 +43,12 @@ class AdController extends Controller
     public function newAction(Request $request)
     {
         $ad = new Ad();
+
         $form = $this->createForm('AppBundle\Form\AdType', $ad);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $ad->setUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($ad);
             $em->flush();
@@ -72,6 +77,7 @@ class AdController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
 
     /**
      * Displays a form to edit an existing ad entity.

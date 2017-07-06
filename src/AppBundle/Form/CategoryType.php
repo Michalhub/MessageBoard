@@ -2,29 +2,18 @@
 
 namespace AppBundle\Form;
 
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-
-
-
-class AdType extends AbstractType
+class CategoryType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title')
-            ->add('description', 'textarea', array(
-                'label' => 'Content',
-                'attr' => array('style' => 'width: 500px')))
-            ->add('expireDate', 'datetime', array(
-                'data' => new \DateTime('now'),
-                'years' => range(date('Y'), date('Y') + 10)))
-            ->add('category');
+        $builder->add('name');
     }
     
     /**
@@ -33,7 +22,7 @@ class AdType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Ad'
+            'data_class' => 'AppBundle\Entity\Category'
         ));
     }
 
@@ -42,7 +31,7 @@ class AdType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_ad';
+        return 'appbundle_category';
     }
 
 

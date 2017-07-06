@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Witaj na stronie{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <!-- Latest compiled and minified CSS -->
@@ -14,25 +14,36 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </head>
-    <body>
+    <body style="background-color: palegoldenrod ">
+
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
-                    <h1>Menu</h1>
-                    {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <div>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            {{ knp_menu_render('AppBundle:Builder:loggedMainMenu') }}
+                        {% elseif is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                            {{ knp_menu_render('AppBundle:Builder:loggedMainMenu') }}
+                        {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                            {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
+                        {% endif %}
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-8">
-                    <h1>Content</h1>
-                    {% block body %}{% endblock %}
-                    {% block javascripts %}{% endblock %}
+                <div class="col-md-2">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <h3>Categories</h3>
+                        {{ knp_menu_render('AppBundle:Builder:categoriesMenu') }}
+                    {% endif %}
+
                 </div>
-                <div class="col-md-4">
-                    <h1>Sidebar</h1>
+                <div class="col-md-10">
+                    {% block body %}{% endblock %}
+
                 </div>
             </div>
-
-
+        </div>
     </body>
 </html>

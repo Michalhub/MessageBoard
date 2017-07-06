@@ -28,6 +28,19 @@ class Picture
      */
     private $path;
 
+    /**
+     * @ORM\ManyToOne(
+     *     targetEntity="Ad",
+     *     inversedBy="picture"
+     * )
+     * @ORM\JoinColumn(
+     *     name="ad_id",
+     *     referencedColumnName="id",
+     *     nullable=false
+     * )
+     */
+    private $ad;
+
 
     /**
      * Get id

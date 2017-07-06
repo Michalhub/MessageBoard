@@ -19,6 +19,14 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\OneToMany(
+     *     targetEntity="Ad",
+     *     mappedBy="user"
+     * )
+     */
+    private $ad;
+
     public function __construct()
     {
         parent::__construct();

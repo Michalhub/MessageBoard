@@ -3,15 +3,16 @@
 {% block body %}
     <h1>Ads list</h1>
 
-    <table>
+    <table class="table table-condensed">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Expiredate</th>
-                <th>Picture</th>
-                <th>Actions</th>
+                <th>Id</th><br />
+                <th>Title</th><br />
+                <th>Description</th><br />
+                <th>Expire date</th><br />
+                <th>Creation date</th>
+
+                <th>Actions</th><br />
             </tr>
         </thead>
         <tbody>
@@ -19,9 +20,13 @@
             <tr>
                 <td><a href="{{ path('ad_show', { 'id': ad.id }) }}">{{ ad.id }}</a></td>
                 <td>{{ ad.title }}</td>
-                <td>{{ ad.description }}</td>
+
+                <td>
+                {{ ad.description }}
+                </td>
+
                 <td>{% if ad.expireDate %}{{ ad.expireDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ ad.picture }}</td>
+                <td>{{ ad.creationDate|date('Y-m-d H:i:s') }}</td>
                 <td>
                     <ul>
                         <li>
