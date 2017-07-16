@@ -18,10 +18,11 @@
 
     <ul>
         <li>
-            <a href="{{ path('category_index') }}">Back to the list</a>
+            <button><a href="{{ path('category_index') }}">Back to the list</a></button>
         </li>
         <li>
-            <a href="{{ path('category_edit', { 'id': category.id }) }}">Edit</a>
+            <button><a href="{{ path('category_edit', { 'id': category.id }) }}">Edit</a>
+            </button>
         </li>
         <li>
             {{ form_start(delete_form) }}

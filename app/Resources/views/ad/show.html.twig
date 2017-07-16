@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Ad</h1>
 
-    <table>
+    <table class="table table-inverse">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -27,10 +27,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('ad_index') }}">Back to the list</a>
+            <button><a href="{{ path('ad_index') }}">Back to the list</a></button>
         </li>
         <li>
-            <a href="{{ path('ad_edit', { 'id': ad.id }) }}">Edit</a>
+            <button><a href="{{ path('ad_edit', { 'id': ad.id }) }}">Edit</a></button>
         </li>
         <li>
             {{ form_start(delete_form) }}

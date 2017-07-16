@@ -99,27 +99,4 @@ class Comment
     {
         return $this->creationDate;
     }
-
-    /**
-     * Set ad
-     *
-     * @param \AppBundle\Entity\Ad $ad
-     * @return Comment
-     */
-    public function setAd(\AppBundle\Entity\Ad $ad = null)
-    {
-        $this->ad = $ad;
-
-        return $this;
-    }
-
-    /**
-     * Get ad
-     *
-     * @return \AppBundle\Entity\Ad 
-     */
-    public function getAd()
-    {
-        return $this->ad;
-    }
 }

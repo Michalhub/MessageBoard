@@ -14,7 +14,7 @@ class Builder implements ContainerAwareInterface
     public function mainMenu(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
-        $menu->setChildrenAttribute('class', 'nav navbar-nav');
+        $menu->setChildrenAttribute('class', 'nav navbar-default');
         // create another menu item
         $menu->addChild('Home', array('route' => 'homepage'));
         $menu->addChild('Register', array('route' => 'fos_user_registration_register'));
@@ -31,8 +31,8 @@ class Builder implements ContainerAwareInterface
     public function loggedMainMenu(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
-        $menu->setChildrenAttribute('class', 'nav navbar-nav');
-        // create another menu item
+        $menu->setChildrenAttribute('class', 'nav navbar-nav navbar-static-top');
+
         $menu->addChild('Home', array('route' => 'homepage'));
         $menu->addChild('Show my ads', array('route' => 'ad_index'));
         $menu->addChild('Create Ad', array('route' => 'ad_new'));
@@ -42,18 +42,29 @@ class Builder implements ContainerAwareInterface
 
         return $menu;
     }
-
+    //show categories
     public function categoriesMenu(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'nav navbar-default');
 
-        // create another menu item
-        $menu->addChild('Bicycles', array('route' => 'homepage'));
+        $menu->addChild('Bicycles', array('route' => 'category_index'));
         $menu->addChild('Car', array('route' => 'homepage'));
         $menu->addChild('Motorcycles', array('route' => 'homepage'));
-        $menu->addChild( 'Home stuff', array('route' => 'homepage'));
+        $menu->addChild( 'Home stuff', array('route' => 'homepage'))
+            ->setAttribute('icon', 'fa fa-home');
 
+        return $menu;
+    }
+    //admin menu
+    public function adminMainMenu(FactoryInterface $factory, array $options)
+    {
+        $menu = $factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'nav navbar-nav navbar-static-top');
 
+        $menu->addChild('Home', array('route' => 'homepage'));
+        $menu->addChild('Create category', array('route' => 'category_new'));
+        $menu->addChild('LogOut', array('route' => 'fos_user_security_logout'));
 
         return $menu;
     }

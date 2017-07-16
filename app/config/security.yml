@@ -28,3 +28,4 @@ security:
         - { path: ^/ad/, role: ROLE_USER }
         - { path: ^/comment/, role: ROLE_USER }
         - { path: ^/category/, role: ROLE_USER }
+        - { path: ^/category/new/, role: ROLE_ADMIN }

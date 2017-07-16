@@ -176,29 +176,6 @@ class Ad
     }
 
     /**
-     * Set picture
-     *
-     * @param string $picture
-     * @return Ad
-     */
-    public function setPicture($picture)
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
-    /**
-     * Get picture
-     *
-     * @return string 
-     */
-    public function getPicture()
-    {
-        return $this->picture;
-    }
-
-    /**
      * @return \DateTime
      */
     public function getCreationDate()
@@ -218,9 +195,10 @@ class Ad
      */
     public function __construct()
     {
-        $this->picture = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->picturePath = new \Doctrine\Common\Collections\ArrayCollection();
         $this->comment = new \Doctrine\Common\Collections\ArrayCollection();
         $this->creationDate = new \Datetime();
+
 
     }
 
@@ -268,39 +246,6 @@ class Ad
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Add category
-     *
-     * @param \AppBundle\Entity\Category $category
-     * @return Ad
-     */
-    public function addCategory(\AppBundle\Entity\Category $category)
-    {
-        $this->category[] = $category;
-
-        return $this;
-    }
-
-    /**
-     * Remove category
-     *
-     * @param \AppBundle\Entity\Category $category
-     */
-    public function removeCategory(\AppBundle\Entity\Category $category)
-    {
-        $this->category->removeElement($category);
-    }
-
-    /**
-     * Get category
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCategory()
-    {
-        return $this->category;
     }
 
     /**
@@ -358,4 +303,33 @@ class Ad
     {
         return $this->comment;
     }
+
+    /**
+     * Set category
+     *
+     * @param \AppBundle\Entity\Category $category
+     * @return Ad
+     */
+    public function setCategory(\AppBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \AppBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    public function __tostring()
+    {
+        return $this->ad;
+    }
+
 }

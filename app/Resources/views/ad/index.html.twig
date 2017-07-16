@@ -24,16 +24,15 @@
                 <td>
                 {{ ad.description }}
                 </td>
-
                 <td>{% if ad.expireDate %}{{ ad.expireDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ ad.creationDate|date('Y-m-d H:i:s') }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('ad_show', { 'id': ad.id }) }}">show</a>
+                            <button><a href="{{ path('ad_show', { 'id': ad.id }) }}">show</a></button>
                         </li>
                         <li>
-                            <a href="{{ path('ad_edit', { 'id': ad.id }) }}">edit</a>
+                            <button><a href="{{ path('ad_edit', { 'id': ad.id }) }}">edit</a></button>
                         </li>
                     </ul>
                 </td>

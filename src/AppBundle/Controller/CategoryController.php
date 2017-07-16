@@ -133,4 +133,35 @@ class CategoryController extends Controller
             ->getForm()
         ;
     }
+
+    /**
+     * Lists all category entities.
+     *
+     * @Route("/", name="category_list")
+     * @Method("GET")
+     */
+    public function showListOfCategories()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $categories = $em->getRepository('AppBundle:Category')->findAll();
+
+        return $this->render('base.html.twig', array(
+            'categories' => $categories,
+        ));
+    }
+
+    /**
+     * Lists all category entities.
+     *
+     * @Route("/", name="category_list")
+     * @Method("GET")
+     */
+    public function showByCategoryName()
+    {
+        $category = $entityManager->getRepository('Bug')
+            ->findBy(array('name' => 'Bicycles'));
+
+        return $this->render('base.html.twig');
+    }
 }

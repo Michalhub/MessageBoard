@@ -71,44 +71,4 @@ class Category
     {
         return $this->category;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->ad = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add ad
-     *
-     * @param \AppBundle\Entity\Ad $ad
-     * @return Category
-     */
-    public function addAd(\AppBundle\Entity\Ad $ad)
-    {
-        $this->ad[] = $ad;
-
-        return $this;
-    }
-
-    /**
-     * Remove ad
-     *
-     * @param \AppBundle\Entity\Ad $ad
-     */
-    public function removeAd(\AppBundle\Entity\Ad $ad)
-    {
-        $this->ad->removeElement($ad);
-    }
-
-    /**
-     * Get ad
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAd()
-    {
-        return $this->ad;
-    }
 }
