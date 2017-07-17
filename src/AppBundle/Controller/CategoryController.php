@@ -32,6 +32,16 @@ class CategoryController extends Controller
     }
 
     /**
+     * List of all available categories in menu
+     */
+    public function showCategories()
+    {
+        $categories = $this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
+
+        return $this->render('category/categoryList.html.twig', array('categories' => $categories));
+    }
+
+    /**
      * Creates a new category entity.
      *
      * @Route("/new", name="category_new")

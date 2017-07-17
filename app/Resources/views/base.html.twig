@@ -6,45 +6,52 @@
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
         <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+              integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
         <!-- Latest compiled and minified JavaScript -->
-
-
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+        </script>
     </head>
-    <body style="background: url('https://www.walldevil.com/wallpapers/a87/abstract-lines-yellow-digital-art-wallpaper-bright-wallpapers.jpg') no-repeat fixed">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div>
-                    <div>
-                        {% if is_granted('ROLE_ADMIN') %}
-                            {{ knp_menu_render('AppBundle:Builder:adminMainMenu') }}
-                        {% elseif is_granted('ROLE_USER') %}
-                            {{ knp_menu_render('AppBundle:Builder:loggedMainMenu') }}
-                        {% elseif is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                            {{ knp_menu_render('AppBundle:Builder:loggedMainMenu') }}
-                        {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
-                            {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <h3 style="color: #1b6d85 ">Categories</h3>
-                        {{ knp_menu_render('AppBundle:Builder:categoriesMenu') }}
-                    {% endif %}
+    <body style="background: url('https://veronners91.files.wordpress.com/2013/03/wooden-panels.jpg') no-repeat fixed">
 
-                </div>
-                <div class="col-md-8">
-                    {% block body %}{% endblock %}
+    <div class="container">
 
+        <div class="row">
+            <div class="col-md-4" style="float: right; margin: 0 auto; ">
+                {% if is_granted('ROLE_ADMIN') %}
+                    {{ knp_menu_render('AppBundle:Builder:adminMainMenu') }}
+                {% elseif is_granted('ROLE_USER') %}
+                    {{ knp_menu_render('AppBundle:Builder:loggedMainMenu') }}
+                {% elseif is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    {{ knp_menu_render('AppBundle:Builder:loggedMainMenu') }}
+                {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                    {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
+                {% endif %}
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-2">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <h3 style="color: #1b6d85 ">Categories</h3>
+                    {{ knp_menu_render('AppBundle:Builder:categoriesMenu') }}
+                    <p>raz raz</p>
+                    <ul>
+                        {{ render(controller('AppBundle:Category:showCategories')) }}
+                    </ul>
+                {% endif %}
+        </div>
+
+
+        <div class="col-md-8">
+            {% block body %}{% endblock %}
+
+        </div>
+    </div>
     </body>
 </html>
