@@ -14,7 +14,7 @@ class Builder implements ContainerAwareInterface
     public function mainMenu(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
-        $menu->setChildrenAttribute('class', 'nav navbar-default');
+        $menu->setChildrenAttribute('class', 'nav navbar-nav navbar-static-top');
         // create another menu item
         $menu->addChild('Home', array('route' => 'homepage'));
         $menu->addChild('Register', array('route' => 'fos_user_registration_register'));

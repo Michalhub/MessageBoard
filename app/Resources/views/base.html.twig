@@ -12,18 +12,16 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
               integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <!-- Fontawesome icons -->
+        <link rel="stylesheet" href="web/font-awesome/css/font-awesome.min.css">
 
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
-        </script>
     </head>
-    <body style="background: url('https://veronners91.files.wordpress.com/2013/03/wooden-panels.jpg') no-repeat fixed">
+    <body style="background: url('http://precisionautoglass.biz/wp-content/uploads/2014/10/Cyan-Blue-Blue-Background-with-White-Light.jpg') no-repeat">
 
     <div class="container">
 
         <div class="row">
-            <div class="col-md-4" style="float: right; margin: 0 auto; ">
+            <div class="col-md-6" style="float: right; margin: 0 auto; ">
                 {% if is_granted('ROLE_ADMIN') %}
                     {{ knp_menu_render('AppBundle:Builder:adminMainMenu') }}
                 {% elseif is_granted('ROLE_USER') %}
@@ -39,19 +37,22 @@
             <div class="col-md-2">
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <h3 style="color: #1b6d85 ">Categories</h3>
-                    {{ knp_menu_render('AppBundle:Builder:categoriesMenu') }}
-                    <p>raz raz</p>
                     <ul>
                         {{ render(controller('AppBundle:Category:showCategories')) }}
                     </ul>
                 {% endif %}
         </div>
+            <div class="col-md-8">
+                {% block body %}{% endblock %}
+                {% block javascript %}{% endblock %}
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-        <div class="col-md-8">
-            {% block body %}{% endblock %}
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+        </script>
 
-        </div>
-    </div>
     </body>
+    <!-- Latest compiled and minified JavaScript -->
+
 </html>

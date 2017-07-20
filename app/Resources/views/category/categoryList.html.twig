@@ -1,5 +1,7 @@
 {% for category in categories %}
-    <li>
-            {{ category.category }}
-    </li>
+    <a href="{{ path('showByCategory', {'id':category.id}) }}">
+        <li class="list-group-item">
+            <i class="fa fa-bicycle" aria-hidden="true"></i>{{ category.name }}
+        </li>
+    </a>
 {% endfor %}

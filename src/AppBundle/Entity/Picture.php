@@ -53,25 +53,25 @@ class Picture
     }
 
     /**
-     * Set picture
+     * Set path
      *
-     * @param string $picture
+     * @param string $path
      * @return Picture
      */
-    public function setPicture($picture)
+    public function setPath($path)
     {
-        $this->picture = $picture;
+        $this->path = $path;
 
         return $this;
     }
 
     /**
-     * Get picture
+     * Get path
      *
      * @return string 
      */
-    public function getPicture()
+    public function getPath()
     {
-        return $this->picture;
+        return $this->path;
     }
 }

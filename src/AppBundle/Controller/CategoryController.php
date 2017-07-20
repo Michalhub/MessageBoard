@@ -34,11 +34,22 @@ class CategoryController extends Controller
     /**
      * List of all available categories in menu
      */
-    public function showCategories()
+    public function showCategoriesAction()
     {
         $categories = $this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
 
         return $this->render('category/categoryList.html.twig', array('categories' => $categories));
+    }
+
+    /**
+     * Show adverts by category
+     *
+     * @Route("/category/{id}", name="showByCategory")
+     */
+    public function showByCategoryAction($id)
+    {
+        $adverts = $this->getDoctrine()->getRepository("AppBundle:Ad")->findBy(array('category'=>$id));
+        return $this->render('category/categoryId.html.twig', array('adverts'=>$adverts));
     }
 
     /**

@@ -10,6 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
 
+
 class AdType extends AbstractType
 {
     /**
@@ -18,14 +19,15 @@ class AdType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('title')
-            ->add('description', 'textarea', array(
-                'label' => 'Content',
-                'attr' => array('style' => 'width: 500px')))
+            ->add('description', 'textarea', array('attr' => array('cols'=>40, 'rows'=>10)))
             ->add('expireDate', 'datetime', array(
                 'data' => new \DateTime('now'),
                 'years' => range(date('Y'), date('Y') + 10)))
             ->add('category');
+
+
     }
+
     
     /**
      * {@inheritdoc}

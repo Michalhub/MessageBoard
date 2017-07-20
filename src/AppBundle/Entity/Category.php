@@ -29,9 +29,9 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="category", type="string", length=100)
+     * @ORM\Column(name="name", type="string", length=100)
      */
-    private $category;
+    private $name;
 
 
     /**
@@ -45,31 +45,31 @@ class Category
     }
 
     /**
-     * Set category
+     * Set name
      *
-     * @param string $category
+     * @param string $name
      * @return Category
      */
-    public function setCategory($category)
+    public function setName($name)
     {
-        $this->category = $category;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get category
+     * Get name
      *
      * @return string 
      */
-    public function getCategory()
+    public function getName()
     {
-        return $this->category;
+        return $this->name;
     }
 
     public function __toString()
     {
-        return $this->category;
+        return $this->name;
     }
     /**
      * Constructor
